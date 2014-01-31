@@ -1,10 +1,16 @@
 ## FlyPHP Framework (Kernel Repository)
 =========
 
-We are working somethings yet.
+Hi, I'm starting this fork of the Laravel framework to fit my needs.
+
+Hope It help someone.
+
+>The Work is in Progress :)
+
 
 > **Note:** This repository its the Kernel code of the FlyPHP framework. 
-Do you want to build some application with FlyPHP? Go to the Skeleton Repository [FlySkeleton repository](https://github.com/flyphpfw/flyskeleton).
+Do you want to build some application with FlyPHP? 
+Go to the Skeleton Repository [FlySkeleton repository](https://github.com/flyphpfw/flyskeleton).
 
 ## Official Documentation
 
