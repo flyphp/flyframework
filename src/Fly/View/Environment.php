@@ -55,7 +55,7 @@ class Environment {
 	 *
 	 * @var array
 	 */
-	protected $extensions = array('blade.php' => 'blade', 'php' => 'php');
+	protected $extensions = array('sword.php' => 'sword', 'php' => 'php');
 
 	/**
 	 * The view composer events.
