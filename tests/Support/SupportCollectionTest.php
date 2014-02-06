@@ -79,10 +79,10 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testOffsetAccess()
 	{
-		$c = new Collection(array('name' => 'taylor'));
-		$this->assertEquals('taylor', $c['name']);
-		$c['name'] = 'dayle';
-		$this->assertEquals('dayle', $c['name']);
+		$c = new Collection(array('name' => 'allan'));
+		$this->assertEquals('allan', $c['name']);
+		$c['name'] = 'freitas';
+		$this->assertEquals('freitas', $c['name']);
 		$this->assertTrue(isset($c['name']));
 		unset($c['name']);
 		$this->assertFalse(isset($c['name']));
@@ -200,15 +200,24 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testSortBy()
 	{
-		$data = new Collection(array('taylor', 'dayle'));
+		$data = new Collection(array('allan', 'freitas'));
 		$data = $data->sortBy(function($x) { return $x; });
 
-		$this->assertEquals(array('dayle', 'taylor'), array_values($data->all()));
+		$this->assertEquals(array('freitas', 'allan'), array_values($data->all()));
 
-		$data = new Collection(array('dayle', 'taylor'));
+		$data = new Collection(array('freitas', 'allan'));
 		$data->sortByDesc(function($x) { return $x; });
 
-		$this->assertEquals(array('taylor', 'dayle'), array_values($data->all()));
+		$this->assertEquals(array('allan', 'freitas'), array_values($data->all()));
+	}
+
+
+	public function testSortByString()
+	{
+		$data = new Collection(array(array('name' => 'allan'), array('name' => 'freitas')));
+		$data = $data->sortBy('name');
+
+		$this->assertEquals(array(array('name' => 'freitas'), array('name' => 'allan')), array_values($data->all()));
 	}
 
 
@@ -223,15 +232,15 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testListsWithArrayAndObjectValues()
 	{
-		$data = new Collection(array((object) array('name' => 'taylor', 'email' => 'foo'), array('name' => 'dayle', 'email' => 'bar')));
-		$this->assertEquals(array('taylor' => 'foo', 'dayle' => 'bar'), $data->lists('email', 'name'));
+		$data = new Collection(array((object) array('name' => 'allan', 'email' => 'foo'), array('name' => 'freitas', 'email' => 'bar')));
+		$this->assertEquals(array('allan' => 'foo', 'freitas' => 'bar'), $data->lists('email', 'name'));
 		$this->assertEquals(array('foo', 'bar'), $data->lists('email'));
 	}
 
 
 	public function testImplode()
 	{
-		$data = new Collection(array(array('name' => 'taylor', 'email' => 'foo'), array('name' => 'dayle', 'email' => 'bar')));
+		$data = new Collection(array(array('name' => 'allan', 'email' => 'foo'), array('name' => 'freitas', 'email' => 'bar')));
 		$this->assertEquals('foobar', $data->implode('email'));
 		$this->assertEquals('foo,bar', $data->implode('email', ','));
 	}
@@ -239,9 +248,9 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testTake()
 	{
-		$data = new Collection(array('taylor', 'dayle', 'shawn'));
+		$data = new Collection(array('allan', 'freitas', 'shawn'));
 		$data = $data->take(2);
-		$this->assertEquals(array('taylor', 'dayle'), $data->all());
+		$this->assertEquals(array('allan', 'freitas'), $data->all());
 	}
 
 
@@ -258,17 +267,17 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testTakeLast()
 	{
-		$data = new Collection(array('taylor', 'dayle', 'shawn'));
+		$data = new Collection(array('allan', 'freitas', 'shawn'));
 		$data = $data->take(-2);
-		$this->assertEquals(array('dayle', 'shawn'), $data->all());
+		$this->assertEquals(array('freitas', 'shawn'), $data->all());
 	}
 
 
 	public function testTakeAll()
 	{
-		$data = new Collection(array('taylor', 'dayle', 'shawn'));
+		$data = new Collection(array('allan', 'freitas', 'shawn'));
 		$data = $data->take();
-		$this->assertEquals(array('taylor', 'dayle', 'shawn'), $data->all());
+		$this->assertEquals(array('allan', 'freitas', 'shawn'), $data->all());
 	}
 
 
@@ -305,7 +314,7 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testTransform()
 	{
-		$data = new Collection(array('taylor', 'colin', 'shawn'));
+		$data = new Collection(array('allan', 'colin', 'shawn'));
 		$data->transform(function($item) { return strrev($item); });
 		$this->assertEquals(array('rolyat', 'niloc', 'nwahs'), array_values($data->all()));
 	}
