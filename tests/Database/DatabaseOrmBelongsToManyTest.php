@@ -15,7 +15,7 @@ class DatabaseOrmBelongsToManyTest extends PHPUnit_Framework_TestCase {
 	public function testModelsAreProperlyHydrated()
 	{
 		$model1 = new OrmBelongsToManyModelStub;
-		$model1->fill(array('name' => 'taylor', 'pivot_user_id' => 1, 'pivot_role_id' => 2));
+		$model1->fill(array('name' => 'allan', 'pivot_user_id' => 1, 'pivot_role_id' => 2));
 		$model2 = new OrmBelongsToManyModelStub;
 		$model2->fill(array('name' => 'dayle', 'pivot_user_id' => 3, 'pivot_role_id' => 4));
 		$models = array($model1, $model2);
@@ -34,7 +34,7 @@ class DatabaseOrmBelongsToManyTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('user_id', $results[0]->pivot->getForeignKey());
 		$this->assertEquals('role_id', $results[0]->pivot->getOtherKey());
 
-		$this->assertEquals('taylor', $results[0]->name);
+		$this->assertEquals('allan', $results[0]->name);
 		$this->assertEquals(1, $results[0]->pivot->user_id);
 		$this->assertEquals(2, $results[0]->pivot->role_id);
 		$this->assertEquals('foo.connection', $results[0]->pivot->getConnectionName());
@@ -50,7 +50,7 @@ class DatabaseOrmBelongsToManyTest extends PHPUnit_Framework_TestCase {
 	public function testTimestampsCanBeRetrievedProperly()
 	{
 		$model1 = new OrmBelongsToManyModelStub;
-		$model1->fill(array('name' => 'taylor', 'pivot_user_id' => 1, 'pivot_role_id' => 2));
+		$model1->fill(array('name' => 'allan', 'pivot_user_id' => 1, 'pivot_role_id' => 2));
 		$model2 = new OrmBelongsToManyModelStub;
 		$model2->fill(array('name' => 'dayle', 'pivot_user_id' => 3, 'pivot_role_id' => 4));
 		$models = array($model1, $model2);

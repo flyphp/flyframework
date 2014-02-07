@@ -86,13 +86,13 @@ class RoutingUrlGeneratorTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('http://www.foo.com/foo/bar', $url->route('foo'));
 		$this->assertEquals('/foo/bar', $url->route('foo', array(), false));
 		$this->assertEquals('/foo/bar?foo=bar', $url->route('foo', array('foo' => 'bar'), false));
-		$this->assertEquals('http://www.foo.com/foo/bar/taylor/breeze/otwell?fly=wall', $url->route('bar', array('taylor', 'otwell', 'fly' => 'wall')));
-		$this->assertEquals('http://www.foo.com/foo/bar/otwell/breeze/taylor?fly=wall', $url->route('bar', array('boom' => 'taylor', 'baz' => 'otwell', 'fly' => 'wall')));
-		$this->assertEquals('/foo/bar/taylor/breeze/otwell?fly=wall', $url->route('bar', array('taylor', 'otwell', 'fly' => 'wall'), false));
+		$this->assertEquals('http://www.foo.com/foo/bar/allan/breeze/otwell?fly=wall', $url->route('bar', array('allan', 'otwell', 'fly' => 'wall')));
+		$this->assertEquals('http://www.foo.com/foo/bar/otwell/breeze/allan?fly=wall', $url->route('bar', array('boom' => 'allan', 'baz' => 'otwell', 'fly' => 'wall')));
+		$this->assertEquals('/foo/bar/allan/breeze/otwell?fly=wall', $url->route('bar', array('allan', 'otwell', 'fly' => 'wall'), false));
 		$this->assertEquals('https://www.foo.com/foo/bar', $url->route('baz'));
 		$this->assertEquals('http://www.foo.com/foo/bar', $url->action('foo@bar'));
-		$this->assertEquals('http://www.foo.com/foo/bar/taylor/breeze/otwell?wall&woz', $url->route('bar', array('wall', 'woz', 'boom' => 'otwell', 'baz' => 'taylor')));
-		$this->assertEquals('http://www.foo.com/foo/bar/taylor/breeze/otwell?wall&woz', $url->route('bar', array('taylor', 'otwell', 'wall', 'woz')));
+		$this->assertEquals('http://www.foo.com/foo/bar/allan/breeze/otwell?wall&woz', $url->route('bar', array('wall', 'woz', 'boom' => 'otwell', 'baz' => 'allan')));
+		$this->assertEquals('http://www.foo.com/foo/bar/allan/breeze/otwell?wall&woz', $url->route('bar', array('allan', 'otwell', 'wall', 'woz')));
 		$this->assertEquals('http://www.foo.com/foo/bar/%C3%A5%CE%B1%D1%84/%C3%A5%CE%B1%D1%84', $url->route('foobarbaz', array('baz' => 'åαф')));
 
 	}
@@ -149,8 +149,8 @@ class RoutingUrlGeneratorTest extends PHPUnit_Framework_TestCase {
 		$routes->add($route);
 
 		$this->assertEquals('http://sub.foo.com/foo/bar', $url->route('foo'));
-		$this->assertEquals('http://sub.taylor.com/foo/bar/otwell', $url->route('bar', array('taylor', 'otwell')));
-		$this->assertEquals('/foo/bar/otwell', $url->route('bar', array('taylor', 'otwell'), false));
+		$this->assertEquals('http://sub.allan.com/foo/bar/otwell', $url->route('bar', array('allan', 'otwell')));
+		$this->assertEquals('/foo/bar/otwell', $url->route('bar', array('allan', 'otwell'), false));
 	}
 
 
@@ -171,7 +171,7 @@ class RoutingUrlGeneratorTest extends PHPUnit_Framework_TestCase {
 		$routes->add($route);
 
 		$this->assertEquals('http://sub.foo.com:8080/foo/bar', $url->route('foo'));
-		$this->assertEquals('http://sub.taylor.com:8080/foo/bar/otwell', $url->route('bar', array('taylor', 'otwell')));
+		$this->assertEquals('http://sub.allan.com:8080/foo/bar/otwell', $url->route('bar', array('allan', 'otwell')));
 	}
 
 

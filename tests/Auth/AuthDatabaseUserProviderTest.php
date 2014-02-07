@@ -43,14 +43,14 @@ class AuthDatabaseUserProviderTest extends PHPUnit_Framework_TestCase {
 		$conn = m::mock('Fly\Database\Connection');
 		$conn->shouldReceive('table')->once()->with('foo')->andReturn($conn);
 		$conn->shouldReceive('where')->once()->with('username', 'dayle');
-		$conn->shouldReceive('first')->once()->andReturn(array('id' => 1, 'name' => 'taylor'));
+		$conn->shouldReceive('first')->once()->andReturn(array('id' => 1, 'name' => 'allan'));
 		$hasher = m::mock('Fly\Hashing\HasherInterface');
 		$provider = new Fly\Auth\DatabaseUserProvider($conn, $hasher, 'foo');
 		$user = $provider->retrieveByCredentials(array('username' => 'dayle', 'password' => 'foo'));
 
 		$this->assertInstanceOf('Fly\Auth\GenericUser', $user);
 		$this->assertEquals(1, $user->getAuthIdentifier());
-		$this->assertEquals('taylor', $user->name);
+		$this->assertEquals('allan', $user->name);
 	}
 
 

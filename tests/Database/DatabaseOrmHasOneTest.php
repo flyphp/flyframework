@@ -30,9 +30,9 @@ class DatabaseOrmHasOneTest extends PHPUnit_Framework_TestCase {
 		$created = $this->getMock('Fly\Database\Orm\Model', array('save', 'getKey', 'setRawAttributes'));
 		$created->expects($this->once())->method('save')->will($this->returnValue(true));
 		$relation->getRelated()->shouldReceive('newInstance')->once()->andReturn($created);
-		$created->expects($this->once())->method('setRawAttributes')->with($this->equalTo(array('name' => 'taylor', 'foreign_key' => 1)));
+		$created->expects($this->once())->method('setRawAttributes')->with($this->equalTo(array('name' => 'allan', 'foreign_key' => 1)));
 
-		$this->assertEquals($created, $relation->create(array('name' => 'taylor')));
+		$this->assertEquals($created, $relation->create(array('name' => 'allan')));
 	}
 
 

@@ -71,7 +71,7 @@ class DatabaseOrmCollectionTest extends PHPUnit_Framework_TestCase {
 		$c = new Collection(array($mockModel));
 
 		$this->assertTrue($mockModel === $c->find(1));
-		$this->assertTrue('taylor' === $c->find(2, 'taylor'));
+		$this->assertTrue('allan' === $c->find(2, 'allan'));
 	}
 
 
@@ -176,8 +176,8 @@ class DatabaseOrmCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testLists()
 	{
-		$data = new Collection(array((object) array('name' => 'taylor', 'email' => 'foo'), (object) array('name' => 'dayle', 'email' => 'bar')));
-		$this->assertEquals(array('taylor' => 'foo', 'dayle' => 'bar'), $data->lists('email', 'name'));
+		$data = new Collection(array((object) array('name' => 'allan', 'email' => 'foo'), (object) array('name' => 'dayle', 'email' => 'bar')));
+		$this->assertEquals(array('allan' => 'foo', 'dayle' => 'bar'), $data->lists('email', 'name'));
 		$this->assertEquals(array('foo', 'bar'), $data->lists('email'));
 	}
 

@@ -200,7 +200,7 @@ class Collection extends BaseCollection {
 	 * @param  \Fly\Support\Collection  $collection
 	 * @return array
 	 */
-	protected function getDictionary($collection)
+	public function getDictionary($collection)
 	{
 		$dictionary = array();
 

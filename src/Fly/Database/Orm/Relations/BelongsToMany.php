@@ -928,9 +928,9 @@ class BelongsToMany extends Relation {
 	 *
 	 * @return \Fly\Database\Orm\Relations\BelongsToMany
 	 */
-	public function withTimestamps()
+	public function withTimestamps($createdAt = null, $updatedAt = null)
 	{
-		return $this->withPivot($this->createdAt(), $this->updatedAt());
+		return $this->withPivot($createdAt ?: $this->createdAt(), $updatedAt ?: $this->updatedAt());
 	}
 
 	/**

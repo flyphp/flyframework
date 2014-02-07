@@ -13,7 +13,7 @@ class SessionStoreTest extends PHPUnit_Framework_TestCase {
 	public function testSessionIsLoadedFromHandler()
 	{
 		$session = $this->getSession();
-		$session->getHandler()->shouldReceive('read')->once()->with(1)->andReturn(serialize(array('foo' => 'bar', 'bagged' => array('name' => 'taylor'))));
+		$session->getHandler()->shouldReceive('read')->once()->with(1)->andReturn(serialize(array('foo' => 'bar', 'bagged' => array('name' => 'allan'))));
 		$session->registerBag(new Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag('bagged'));
 		$session->start();
 
@@ -21,7 +21,7 @@ class SessionStoreTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('baz', $session->get('bar', 'baz'));
 		$this->assertTrue($session->has('foo'));
 		$this->assertFalse($session->has('bar'));
-		$this->assertEquals('taylor', $session->getBag('bagged')->get('name'));
+		$this->assertEquals('allan', $session->getBag('bagged')->get('name'));
 		$this->assertInstanceOf('Symfony\Component\HttpFoundation\Session\Storage\MetadataBag', $session->getMetadataBag());
 		$this->assertTrue($session->isStarted());
 

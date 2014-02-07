@@ -106,15 +106,15 @@ class ConfigRepositoryTest extends PHPUnit_Framework_TestCase {
 		$options = $this->getDummyOptions();
 		$config->getLoader()->shouldReceive('load')->once()->with('production', 'foo', null)->andReturn(array('name' => 'dayle'));
 
-		$config->set('foo.name', 'taylor');
-		$this->assertEquals('taylor', $config->get('foo.name'));
+		$config->set('foo.name', 'allan');
+		$this->assertEquals('allan', $config->get('foo.name'));
 
 		$config = $this->getRepository();
 		$options = $this->getDummyOptions();
 		$config->getLoader()->shouldReceive('load')->once()->with('production', 'foo', 'namespace')->andReturn(array('name' => 'dayle'));
 
-		$config->set('namespace::foo.name', 'taylor');
-		$this->assertEquals('taylor', $config->get('namespace::foo.name'));
+		$config->set('namespace::foo.name', 'allan');
+		$this->assertEquals('allan', $config->get('namespace::foo.name'));
 	}
 
 

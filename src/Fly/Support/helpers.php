@@ -484,6 +484,7 @@ if ( ! function_exists('base_path'))
 	/**
 	 * Get the path to the base of the install.
 	 *
+	 * @param  string $path
 	 * @return string
 	 */
 	function base_path($path = '')
@@ -752,7 +753,7 @@ if ( ! function_exists('route'))
 	 * Generate a URL to a named route.
 	 *
 	 * @param  string  $route
-	 * @param  string  $parameters
+	 * @param  array   $parameters
 	 * @return string
 	 */
 	function route($route, $parameters = array())

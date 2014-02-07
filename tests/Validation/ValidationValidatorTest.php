@@ -63,6 +63,31 @@ class ValidationValidatorTest extends PHPUnit_Framework_TestCase {
 	}
 
 
+	public function testCustomReplacersAreCalled()
+	{
+		$trans = $this->getRealTranslator();
+		$trans->addResource('array', array('validation.required' => 'foo bar'), 'en', 'messages');
+		$v = new Validator($trans, array('name' => ''), array('name' => 'Required'));
+		$v->addReplacer('required', function($message, $attribute, $rule, $parameters) { return str_replace('bar', 'allan', $message); });
+		$this->assertFalse($v->passes());
+		$v->messages()->setFormat(':message');
+		$this->assertEquals('foo allan', $v->messages()->first('name'));
+	}
+
+	public function testClassBasedCustomReplacers()
+	{
+		$trans = $this->getRealTranslator();
+		$trans->addResource('array', array('validation.foo' => 'foo!'), 'en', 'messages');
+		$v = new Validator($trans, array(), array('name' => 'required'));
+		$v->setContainer($container = m::mock('Fly\Container\Container'));
+		$v->addReplacer('required', 'Foo@bar');
+		$container->shouldReceive('make')->once()->with('Foo')->andReturn($foo = m::mock('StdClass'));
+		$foo->shouldReceive('bar')->once()->andReturn('replaced!');
+		$v->passes();
+		$v->messages()->setFormat(':message');
+		$this->assertEquals('replaced!', $v->messages()->first('name'));
+	}
+
 	public function testAttributeNamesAreReplaced()
 	{
 		$trans = $this->getRealTranslator();
@@ -169,6 +194,18 @@ class ValidationValidatorTest extends PHPUnit_Framework_TestCase {
 		$v = new Validator($trans, array('file' => $file, 'foo' => $foo), array('foo' => 'required_with:file'));
 		$this->assertFalse($v->passes());
 	}
+
+
+	public function testRequiredWithAll()
+	{
+		$trans = $this->getRealTranslator();
+		$v = new Validator($trans, array('first' => 'foo'), array('last' => 'required_with_all:first,foo'));
+		$this->assertTrue($v->passes());
+
+		$v = new Validator($trans, array('first' => 'foo'), array('last' => 'required_with_all:first'));
+		$this->assertFalse($v->passes());
+	}
+
 
 	public function testValidateRequiredWithout()
 	{

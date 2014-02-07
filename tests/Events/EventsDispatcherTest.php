@@ -45,7 +45,7 @@ class EventsDispatcherTest extends PHPUnit_Framework_TestCase {
 	{
 		unset($_SERVER['__event.test']);
 		$d = new Dispatcher;
-		$d->queue('update', array('name' => 'taylor'));
+		$d->queue('update', array('name' => 'allan'));
 		$d->listen('update', function($name)
 		{
 			$_SERVER['__event.test'] = $name;
@@ -53,7 +53,7 @@ class EventsDispatcherTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertFalse(isset($_SERVER['__event.test']));
 		$d->flush('update');
-		$this->assertEquals('taylor', $_SERVER['__event.test']);
+		$this->assertEquals('allan', $_SERVER['__event.test']);
 	}
 
 

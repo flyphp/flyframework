@@ -197,7 +197,7 @@ class DatabaseOrmBuilderTest extends PHPUnit_Framework_TestCase {
 	public function testGetModelsProperlyHydratesModels()
 	{
 		$builder = $this->getMock('Fly\Database\Orm\Builder', array('get'), $this->getMocks());
-		$records[] = array('name' => 'taylor', 'age' => 26);
+		$records[] = array('name' => 'allan', 'age' => 26);
 		$records[] = array('name' => 'dayle', 'age' => 28);
 		$builder->getQuery()->shouldReceive('get')->once()->with(array('foo'))->andReturn($records);
 		$model = m::mock('Fly\Database\Orm\Model[getTable,getConnectionName,newInstance]');
@@ -208,7 +208,7 @@ class DatabaseOrmBuilderTest extends PHPUnit_Framework_TestCase {
 		$model->shouldReceive('newInstance')->andReturnUsing(function() { return new OrmBuilderTestModelStub; });
 		$models = $builder->getModels(array('foo'));
 
-		$this->assertEquals('taylor', $models[0]->name);
+		$this->assertEquals('allan', $models[0]->name);
 		$this->assertEquals($models[0]->getAttributes(), $models[0]->getOriginal());
 		$this->assertEquals('dayle', $models[1]->name);
 		$this->assertEquals($models[1]->getAttributes(), $models[1]->getOriginal());
