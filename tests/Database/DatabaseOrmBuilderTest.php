@@ -335,7 +335,7 @@ class DatabaseOrmBuilderTest extends PHPUnit_Framework_TestCase {
 
 	public function testNestedWhere()
 	{
-		$nestedQuery = $this->getMockEloquentBuilder();
+		$nestedQuery = $this->getMockOrmBuilder();
 		$nestedRawQuery = $this->getMockQueryBuilder();
 		$nestedQuery->shouldReceive('getQuery')->once()->andReturn($nestedRawQuery);
 		$model = $this->getMockModel()->makePartial();

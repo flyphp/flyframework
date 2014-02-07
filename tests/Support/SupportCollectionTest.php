@@ -200,24 +200,24 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testSortBy()
 	{
-		$data = new Collection(array('allan', 'freitas'));
+		$data = new Collection(array('freitas', 'allan'));
 		$data = $data->sortBy(function($x) { return $x; });
 
-		$this->assertEquals(array('freitas', 'allan'), array_values($data->all()));
+		$this->assertEquals(array('allan', 'freitas'), array_values($data->all()));
 
-		$data = new Collection(array('freitas', 'allan'));
+		$data = new Collection(array('allan', 'freitas'));
 		$data->sortByDesc(function($x) { return $x; });
 
-		$this->assertEquals(array('allan', 'freitas'), array_values($data->all()));
+		$this->assertEquals(array('freitas', 'allan'), array_values($data->all()));
 	}
 
 
 	public function testSortByString()
 	{
-		$data = new Collection(array(array('name' => 'allan'), array('name' => 'freitas')));
+		$data = new Collection(array(array('name' => 'freitas'), array('name' => 'allan')));
 		$data = $data->sortBy('name');
 
-		$this->assertEquals(array(array('name' => 'freitas'), array('name' => 'allan')), array_values($data->all()));
+		$this->assertEquals(array(array('name' => 'allan'), array('name' => 'freitas')), array_values($data->all()));
 	}
 
 
@@ -316,7 +316,7 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 	{
 		$data = new Collection(array('allan', 'colin', 'shawn'));
 		$data->transform(function($item) { return strrev($item); });
-		$this->assertEquals(array('rolyat', 'niloc', 'nwahs'), array_values($data->all()));
+		$this->assertEquals(array('nalla', 'niloc', 'nwahs'), array_values($data->all()));
 	}
 
 
