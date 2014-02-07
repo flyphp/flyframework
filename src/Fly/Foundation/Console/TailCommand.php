@@ -128,7 +128,7 @@ class TailCommand extends Command {
 	}
 
 	/**
-	 * Get the path to the Laravel install root.
+	 * Get the path to the FlyPHP install root.
 	 *
 	 * @param  string  $connection
 	 * @return string

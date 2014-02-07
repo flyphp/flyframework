@@ -385,7 +385,7 @@ class FormBuilderTest extends PHPUnit_Framework_TestCase {
 
 	public function testImageInput()
 	{
-		$url = 'http://laravel.com/';
+		$url = 'http://flyphp.org/';
 		$image = $this->formBuilder->image($url);
 
 		$this->assertEquals('<input src="'. $url .'" type="image">', $image);

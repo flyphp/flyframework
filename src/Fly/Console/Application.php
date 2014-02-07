@@ -210,7 +210,7 @@ class Application extends \Symfony\Component\Console\Application {
 	}
 
 	/**
-	 * Set the Laravel application instance.
+	 * Set the FlyPHP application instance.
 	 *
 	 * @param  \Fly\Foundation\Application  $flyphp
 	 * @return \Fly\Console\Application

@@ -7,7 +7,6 @@ class SupportStrTest extends PHPUnit_Framework_TestCase {
 	/**
 	* Test the Str::words method.
 	*
-	* @group laravel
 	*/
 	public function testStringCanBeLimitedByWords()
 	{

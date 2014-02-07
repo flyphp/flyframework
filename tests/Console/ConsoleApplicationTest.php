@@ -10,7 +10,7 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase {
 	}
 
 
-	public function testAddSetsLaravelInstance()
+	public function testAddSetsFlyphpInstance()
 	{
 		$app = $this->getMock('Fly\Console\Application', array('addToParent'));
 		$app->setFlyphp('foo');
@@ -23,7 +23,7 @@ class ConsoleApplicationTest extends PHPUnit_Framework_TestCase {
 	}
 
 
-	public function testLaravelNotSetOnSymfonyCommands()
+	public function testFlyphpNotSetOnSymfonyCommands()
 	{
 		$app = $this->getMock('Fly\Console\Application', array('addToParent'));
 		$app->setFlyphp('foo');
