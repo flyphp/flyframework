@@ -502,6 +502,8 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
 	 */
 	public static function find($id, $columns = array('*'))
 	{
+		if (is_array($id) && empty($id)) return new Collection;
+
 		$instance = new static;
 
 		return $instance->newQuery()->find($id, $columns);
@@ -751,8 +753,6 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
 		if (is_null($relation))
 		{
 			$caller = $this->getBelongsToManyCaller();
-
-			$name = $caller['function'];
 		}
 
 		// First, we'll need to determine the foreign key and "other key" for the
@@ -1334,13 +1334,13 @@ abstract class Model implements ArrayAccess, ArrayableInterface, JsonableInterfa
 			if ($this->timestamps)
 			{
 				$this->updateTimestamps();
-
-				$dirty = $this->getDirty();
 			}
 
 			// Once we have run the update operation, we will fire the "updated" event for
 			// this model instance. This will allow developers to hook into these after
 			// models are updated, giving them a chance to do any special processing.
+			$dirty = $this->getDirty();
+			
 			$this->setKeysForSaveQuery($query)->update($dirty);
 
 			$this->fireModelEvent('updated', false);

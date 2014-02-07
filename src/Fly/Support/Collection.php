@@ -411,14 +411,8 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
 	{
 		$results = array();
 
-		// If we passed a key to sort by, create a closure for it
- 		if (is_string($callback))
- 		{
- 			$callback = function($item) use ($callback)
- 			{
- 				return is_object($item) ? $item->{$callback} : array_get($item, $callback);
- 			};
- 		}
+		if (is_string($callback)) $callback =
+                  $this->valueRetriever($callback);
 
 		// First we will loop through the items and get the comparator from a callback
 		// function which we were given. Then, we will sort the returned values and
@@ -444,6 +438,7 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
 		return $this;
 	}
 
+
 	/**
 	 * Sort the collection in descending order using the given Closure.
 	 *
@@ -467,6 +462,27 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
 	public function splice($offset, $length = 0, $replacement = array())
 	{
 		return new static(array_splice($this->items, $offset, $length, $replacement));
+	}
+
+	/**
+	 * Get the sum of the given values.
+	 *
+	 * @param  \Closure  $callback
+	 * @param  string  $callback
+	 * @return mixed
+	 */
+	public function sum($callback)
+	{
+		if (is_string($callback))
+		{
+			$callback = $this->valueRetriever($callback);
+		}
+
+		return $this->reduce(function($result, $item) use ($callback)
+		{
+			return $result += $callback($item);
+
+		}, 0);
 	}
 
 	/**
@@ -515,6 +531,20 @@ class Collection implements ArrayAccess, ArrayableInterface, Countable, Iterator
 		$this->items = array_values($this->items);
 
 		return $this;
+	}
+
+	/**
+	 * Get a value retrieving callback.
+	 *
+	 * @param  string  $value
+	 * @return \Closure
+	 */
+	protected function valueRetriever($value)
+	{
+		return function($item) use ($value)
+		{
+			return is_object($item) ? $item->{$value} : array_get($item, $value);
+		};
 	}
 
 	/**

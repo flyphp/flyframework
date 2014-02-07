@@ -67,6 +67,13 @@ class DatabaseOrmModelTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('foo', $result);
 	}
 
+	/**
+	 * @expectedException Fly\Database\Orm\ModelNotFoundException
+	 */
+	public function testFindOrFailMethodThrowsModelNotFoundException()
+	{
+		$result = OrmModelFindNotFoundStub::findOrFail(1);
+	}
 
 	public function testFindMethodWithArrayCallsQueryBuilderCorrectly()
 	{
@@ -826,6 +833,15 @@ class OrmModelFindStub extends Fly\Database\Orm\Model {
 	{
 		$mock = m::mock('Fly\Database\Orm\Builder');
 		$mock->shouldReceive('find')->once()->with(1, array('*'))->andReturn('foo');
+		return $mock;
+	}
+}
+
+class OrmModelFindNotFoundStub extends Fly\Database\Orm\Model {
+	public function newQuery($excludeDeleted = true)
+	{
+		$mock = m::mock('Fly\Database\Orm\Builder');
+		$mock->shouldReceive('find')->once()->with(1, array('*'))->andReturn(null);
 		return $mock;
 	}
 }

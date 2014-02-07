@@ -963,7 +963,7 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 
 		// Once this route has run and the response has been prepared, we will run the
 		// after filter to do any last work on the response or for this application
-		// before we will return the rseponse back to the consuming code for use.
+		// before we will return the response back to the consuming code for use.
 		$this->callFilter('after', $request, $response);
 
 		return $response;
@@ -978,6 +978,9 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 	public function dispatchToRoute(Request $request)
 	{
 		$route = $this->findRoute($request);
+
+		// Inform event subscribers that a route has been found.
+        $this->events->fire('router.matched', array($route, $request));
 
 		// Once we have successfully matched the incoming request to a given route we
 		// can call the before filters on that route. This works similar to global
@@ -1042,6 +1045,17 @@ class Router implements HttpKernelInterface, RouteFiltererInterface {
 	protected function performBinding($key, $value, $route)
 	{
 		return call_user_func($this->binders[$key], $value, $route);
+	}
+
+	/**
+	 * Register a route matched event listener.
+	 *
+	 * @param  callable  $callback
+	 * @return void
+	 */
+	public function matched($callback)
+	{
+		$this->events->listen('router.matched', $callback);
 	}
 
 	/**

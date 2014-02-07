@@ -306,6 +306,7 @@ class Route {
 		unset($this->parameters[$name]);
 	}
 
+
 	/**
 	 * Get the key / value list of parameters for the route.
 	 *

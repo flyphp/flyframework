@@ -24,23 +24,23 @@ class RemoteSecLibGatewayTest extends PHPUnit_Framework_TestCase {
 		$gateway->shouldReceive('getNewKey')->andReturn($key = m::mock('StdClass'));
 		$key->shouldReceive('setPassword')->once()->with('keyphrase');
 		$key->shouldReceive('loadKey')->once()->with('keystuff');
-		$gateway->getConnection()->shouldReceive('login')->with('taylor', $key);
+		$gateway->getConnection()->shouldReceive('login')->with('allan', $key);
 
-		$gateway->connect('taylor');
+		$gateway->connect('allan');
 	}
 
 
 	public function testKeyTextCanBeSetManually()
 	{
 		$files = m::mock('Fly\Filesystem\Filesystem');
-		$gateway = m::mock('Fly\Remote\SecLibGateway', array('127.0.0.1:22', array('username' => 'taylor', 'keytext' => 'keystuff'), $files))->makePartial();
+		$gateway = m::mock('Fly\Remote\SecLibGateway', array('127.0.0.1:22', array('username' => 'allan', 'keytext' => 'keystuff'), $files))->makePartial();
 		$gateway->shouldReceive('getConnection')->andReturn(m::mock('StdClass'));
 		$gateway->shouldReceive('getNewKey')->andReturn($key = m::mock('StdClass'));
 		$key->shouldReceive('setPassword')->once()->with(null);
 		$key->shouldReceive('loadKey')->once()->with('keystuff');
-		$gateway->getConnection()->shouldReceive('login')->with('taylor', $key);
+		$gateway->getConnection()->shouldReceive('login')->with('allan', $key);
 
-		$gateway->connect('taylor');
+		$gateway->connect('allan');
 	}
 
 
@@ -48,7 +48,7 @@ class RemoteSecLibGatewayTest extends PHPUnit_Framework_TestCase {
 	{
 		$files = m::mock('Fly\Filesystem\Filesystem');
 		$files->shouldReceive('get')->with('keypath')->andReturn('keystuff');
-		$gateway = m::mock('Fly\Remote\SecLibGateway', array('127.0.0.1:22', array('username' => 'taylor', 'key' => 'keypath', 'keyphrase' => 'keyphrase'), $files))->makePartial();
+		$gateway = m::mock('Fly\Remote\SecLibGateway', array('127.0.0.1:22', array('username' => 'allan', 'key' => 'keypath', 'keyphrase' => 'keyphrase'), $files))->makePartial();
 		$gateway->shouldReceive('getConnection')->andReturn(m::mock('StdClass'));
 		return $gateway;
 	}

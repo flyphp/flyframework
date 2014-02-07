@@ -42,6 +42,10 @@ class CookieTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($c->isSecure());
 		$this->assertEquals('/domain', $c->getDomain());
 		$this->assertEquals('/path', $c->getPath());
+
+		$c3 = $cookie->forget('color');
+		$this->assertTrue($c3->getValue() === null);
+		$this->assertTrue($c3->getExpiresTime() < time());
 	}
 
 
@@ -57,10 +61,16 @@ class CookieTest extends PHPUnit_Framework_TestCase {
 	public function testUnqueue()
 	{
 		$cookie = $this->getCreator();
-		$cookie->queue($cookie->make('foo','bar'));
-		$this->assertArrayHasKey('foo',$cookie->getQueuedCookies());
-		$cookie->unqueue('foo');
 		$this->assertEmpty($cookie->getQueuedCookies());
+		$this->assertFalse($cookie->hasQueued('foo'));
+		$cookie->queue($cookie->make('foo','bar'));
+		$this->assertArrayHasKey('foo', $cookie->getQueuedCookies());
+		$this->assertTrue($cookie->hasQueued('foo'));
+		$this->assertInstanceOf('Symfony\Component\HttpFoundation\Cookie', $cookie->queued('foo'));
+		$cookie->queue('qu','ux');
+		$this->assertArrayHasKey('qu', $cookie->getQueuedCookies());
+		$this->assertTrue($cookie->hasQueued('qu'));
+		$this->assertInstanceOf('Symfony\Component\HttpFoundation\Cookie', $cookie->queued('qu'));
 	}
 
 	public function getCreator()
