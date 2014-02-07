@@ -587,7 +587,7 @@ class Builder {
 	 * @param  string  $operator
 	 * @param  mixed   $value
 	 * @param  string  $boolean
-	 * @return \Illuminate\Database\Eloquent\Builder|static
+	 * @return \Fly\Database\Eloquent\Builder|static
 	 */
 	public function where($column, $operator = null, $value = null, $boolean = 'and')
 	{
@@ -613,7 +613,7 @@ class Builder {
 	 * @param  string  $column
 	 * @param  string  $operator
 	 * @param  mixed   $value
-	 * @return \Illuminate\Database\Eloquent\Builder|static
+	 * @return \Fly\Database\Eloquent\Builder|static
 	 */
 	public function orWhere($column, $operator = null, $value = null)
 	{

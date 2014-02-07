@@ -14,7 +14,7 @@ class Request extends SymfonyRequest {
 	protected $json;
 
 	/**
-	 * The Illuminate session store implementation.
+	 * The FlyPHP session store implementation.
 	 *
 	 * @var \Fly\Session\Store
 	 */
@@ -488,7 +488,7 @@ class Request extends SymfonyRequest {
 	}
 
 	/**
-	 * Create an Illuminate request from a Symfony instance.
+	 * Create an FlyPHP request from a Symfony instance.
 	 *
 	 * @param  \Symfony\Component\HttpFoundation\Request  $request
 	 * @return \Fly\Http\Request

@@ -561,7 +561,7 @@ class Connection implements ConnectionInterface {
 	{
 		if (isset($this->events))
 		{
-			$this->events->fire('illuminate.query', array($query, $bindings, $time, $this->getName()));
+			$this->events->fire('flyphp.query', array($query, $bindings, $time, $this->getName()));
 		}
 
 		if ( ! $this->loggingQueries) return;
@@ -579,7 +579,7 @@ class Connection implements ConnectionInterface {
 	{
 		if (isset($this->events))
 		{
-			$this->events->listen('illuminate.query', $callback);
+			$this->events->listen('flyphp.query', $callback);
 		}
 	}
 

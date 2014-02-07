@@ -100,7 +100,7 @@ class Application extends Container implements HttpKernelInterface, TerminableIn
 	protected static $requestClass = 'Fly\Http\Request';
 
 	/**
-	 * Create a new Illuminate application instance.
+	 * Create a new FlyPHP application instance.
 	 *
 	 * @param  \Fly\Http\Request
 	 * @return void

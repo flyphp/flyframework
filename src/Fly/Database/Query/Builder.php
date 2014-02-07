@@ -200,7 +200,7 @@ class Builder {
 	 * Add a new "raw" select expression to the query.
 	 *
 	 * @param  string  $expression
-	 * @return \Illuminate\Database\Query\Builder|static
+	 * @return \Fly\Database\Query\Builder|static
 	 */
 	public function selectRaw($expression)
 	{
@@ -518,7 +518,7 @@ class Builder {
 	 *
 	 * @param  \Closure $callback
 	 * @param  string   $boolean
-	 * @return \Illuminate\Database\Query\Builder|static
+	 * @return \Fly\Database\Query\Builder|static
 	 */
 	public function whereNested(Closure $callback, $boolean = 'and')
 	{
@@ -537,9 +537,9 @@ class Builder {
 	/**
 	 * Add another query builder as a nested where to the query builder.
 	 *
-	 * @param  \Illuminate\Database\Query\Builder|static $query
+	 * @param  \Fly\Database\Query\Builder|static $query
 	 * @param  string  $boolean
-	 * @return \Illuminate\Database\Query\Builder|static
+	 * @return \Fly\Database\Query\Builder|static
 	 */
 	public function addNestedWhereQuery($query, $boolean = 'and')
 	{

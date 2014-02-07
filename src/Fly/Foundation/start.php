@@ -79,7 +79,7 @@ if (isset($unitTesting))
 
 /*
 |--------------------------------------------------------------------------
-| Load The Illuminate Facades
+| Load The FlyPHP Facades
 |--------------------------------------------------------------------------
 |
 | The facades provide a terser static interface over the various parts
@@ -199,8 +199,8 @@ Request::enableHttpMethodParameterOverride();
 | Register The Core Service Providers
 |--------------------------------------------------------------------------
 |
-| The Illuminate core service providers register all of the core pieces
-| of the Illuminate framework including session, caching, encryption
+| The FlyPHP core service providers register all of the core pieces
+| of the FlyPHP framework including session, caching, encryption
 | and more. It's simply a convenient wrapper for the registration.
 |
 */

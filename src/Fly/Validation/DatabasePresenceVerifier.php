@@ -81,7 +81,7 @@ class DatabasePresenceVerifier implements PresenceVerifierInterface {
 	/**
 	 * Add a "where" clause to the given query.
 	 *
-	 * @param  \Illuminate\Database\Query\Builder  $query
+	 * @param  \Fly\Database\Query\Builder  $query
 	 * @param  string  $key
 	 * @param  string  $extraValue
 	 * @return void

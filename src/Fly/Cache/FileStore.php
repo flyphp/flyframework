@@ -5,7 +5,7 @@ use Fly\Filesystem\Filesystem;
 class FileStore implements StoreInterface {
 
 	/**
-	 * The Illuminate Filesystem instance.
+	 * The FlyPHP Filesystem instance.
 	 *
 	 * @var \Fly\Filesystem\Filesystem
 	 */

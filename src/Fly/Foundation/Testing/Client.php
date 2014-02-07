@@ -7,7 +7,7 @@ use Symfony\Component\BrowserKit\Request as DomRequest;
 class Client extends BaseClient {
 
 	/**
-	 * Convert a BrowserKit request into a Illuminate request.
+	 * Convert a BrowserKit request into a FlyPHP request.
 	 *
 	 * @param  \Symfony\Component\BrowserKit\Request  $request
 	 * @return \Fly\Http\Request

@@ -180,7 +180,7 @@ class DatabaseConnectionTest extends PHPUnit_Framework_TestCase {
 		$connection = $this->getMockConnection();
 		$connection->logQuery('foo', array(), time());
 		$connection->setEventDispatcher($events = m::mock('Fly\Events\Dispatcher'));
-		$events->shouldReceive('fire')->once()->with('illuminate.query', array('foo', array(), null, null));
+		$events->shouldReceive('fire')->once()->with('flyphp.query', array('foo', array(), null, null));
 		$connection->logQuery('foo', array(), null);
 	}
 

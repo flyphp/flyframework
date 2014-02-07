@@ -21,7 +21,7 @@ class Manager {
 	/**
 	 * The database manager instance.
 	 *
-	 * @var \Illuminate\Database\DatabaseManager
+	 * @var \Fly\Database\DatabaseManager
 	 */
 	protected $manager;
 
@@ -185,7 +185,7 @@ class Manager {
 	/**
 	 * Get the database manager instance.
 	 *
-	 * @return \Illuminate\Database\Manager
+	 * @return \Fly\Database\Manager
 	 */
 	public function getDatabaseManager()
 	{

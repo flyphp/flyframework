@@ -6,7 +6,7 @@ use Fly\Auth\UserInterface;
 abstract class TestCase extends \PHPUnit_Framework_TestCase {
 
 	/**
-	 * The Illuminate application instance.
+	 * The FlyPHP application instance.
 	 *
 	 * @var \Fly\Foundation\Application
 	 */

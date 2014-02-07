@@ -44,7 +44,7 @@ class Guard {
 	protected $session;
 
 	/**
-	 * The Illuminate cookie creator service.
+	 * The FlyPHP cookie creator service.
 	 *
 	 * @var \Fly\Cookie\CookieJar
 	 */
