@@ -1,6 +1,6 @@
 ## FlyDatabase
 
-The FlyDatabase component is a full database toolkit for PHP, providing an expressive query builder, ActiveRecord style ORM, and schema builder. It currently supports MySQL, Postgres, SQL Server, and SQLite. It also serves as the database layer of the FlyPHP framework.
+The FlyDatabase component is a full database toolkit for PHP, providing an expressive query builder, an ActiveRecord, and schema builder. It currently supports MySQL, Postgres, SQL Server, and SQLite. It also serves as the database layer of the FlyPHP framework.
 
 ### Usage Instructions
 
@@ -22,7 +22,7 @@ $capsule->addConnection([
 	'prefix'    => '',
 ]);
 
-// Set the event dispatcher used by FlyOrm models... (optional)
+// Set the event dispatcher used by ActiveRecord models... (optional)
 use Fly\Events\Dispatcher;
 use Fly\Container\Container;
 $capsule->setEventDispatcher(new Dispatcher(new Container));
@@ -33,8 +33,8 @@ $capsule->setCacheManager(...);
 // Make this Capsule instance available globally via static methods... (optional)
 $capsule->setAsGlobal();
 
-// Setup the Orm... (optional; unless you've used setEventDispatcher())
-$capsule->bootOrm();
+// Setup the ActiveRecord... (optional; unless you've used setEventDispatcher())
+$capsule->bootActiveRecord();
 ```
 
 Once the Capsule instance has been registered. You may use it like so:
@@ -60,10 +60,10 @@ Capsule::schema()->create('users', function($table)
 });
 ```
 
-**Using The FlyOrm**
+**Using The Fly ActiveRecord**
 
 ```PHP
-class User extends Fly\Database\Orm\Model {}
+class User extends Fly\Database\ActiveRecord\Model {}
 
 $users = User::where('votes', '>', 1)->get();
 ```

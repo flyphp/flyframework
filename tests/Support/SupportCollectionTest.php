@@ -70,7 +70,7 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testCastingToStringJsonEncodesTheToArrayResult()
 	{
-		$c = $this->getMock('Fly\Database\Orm\Collection', array('toArray'));
+		$c = $this->getMock('Fly\Database\ActiveRecord\Collection', array('toArray'));
 		$c->expects($this->once())->method('toArray')->will($this->returnValue('foo'));
 
 		$this->assertEquals(json_encode('foo'), (string) $c);
@@ -305,8 +305,8 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 
 	public function testGetListValueWithAccessors()
 	{
-		$model    = new TestAccessorOrmTestStub(array('some' => 'foo'));
-		$modelTwo = new TestAccessorOrmTestStub(array('some' => 'bar'));
+		$model    = new TestAccessorActiveRecordTestStub(array('some' => 'foo'));
+		$modelTwo = new TestAccessorActiveRecordTestStub(array('some' => 'bar'));
 		$data     = new Collection(array($model, $modelTwo));
 
 		$this->assertEquals(array('foo', 'bar'), $data->lists('some'));
@@ -359,7 +359,7 @@ class SupportCollectionTest extends PHPUnit_Framework_TestCase {
 	
 }
 
-class TestAccessorOrmTestStub
+class TestAccessorActiveRecordTestStub
 {
 	protected $attributes = array();
 

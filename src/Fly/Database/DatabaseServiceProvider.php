@@ -1,6 +1,6 @@
 <?php namespace Fly\Database;
 
-use Fly\Database\Orm\Model;
+use Fly\Database\ActiveRecord\Model;
 use Fly\Support\ServiceProvider;
 use Fly\Database\Connectors\ConnectionFactory;
 

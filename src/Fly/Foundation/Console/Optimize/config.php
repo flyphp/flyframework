@@ -62,7 +62,7 @@ return array_map('realpath', array(
     $basePath.'/vendor/flyphp/framework/src/Fly/Routing/Matching/UriValidator.php',
     $basePath.'/vendor/flyphp/framework/src/Fly/Workbench/WorkbenchServiceProvider.php',
     $basePath.'/vendor/flyphp/framework/src/Fly/Events/Dispatcher.php',
-    $basePath.'/vendor/flyphp/framework/src/Fly/Database/Orm/Model.php',
+    $basePath.'/vendor/flyphp/framework/src/Fly/Database/ActiveRecord/Model.php',
     $basePath.'/vendor/flyphp/framework/src/Fly/Support/Contracts/ArrayableInterface.php',
     $basePath.'/vendor/flyphp/framework/src/Fly/Support/Contracts/JsonableInterface.php',
     $basePath.'/vendor/flyphp/framework/src/Fly/Database/DatabaseManager.php',

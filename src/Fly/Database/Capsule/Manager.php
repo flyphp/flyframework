@@ -6,7 +6,7 @@ use Fly\Events\Dispatcher;
 use Fly\Cache\CacheManager;
 use Fly\Container\Container;
 use Fly\Database\DatabaseManager;
-use Fly\Database\Orm\Model as FlyModel;
+use Fly\Database\ActiveRecord\Model as FlyModel;
 use Fly\Database\Connectors\ConnectionFactory;
 
 class Manager {

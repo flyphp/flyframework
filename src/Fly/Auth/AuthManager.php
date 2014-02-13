@@ -61,7 +61,7 @@ class AuthManager extends Manager {
 		$connection = $this->app['db']->connection();
 
 		// When using the basic database user provider, we need to inject the table we
-		// want to use, since this is not an Eloquent model we will have no way to
+		// want to use, since this is not an ActiveRecord model we will have no way to
 		// know without telling the provider, so we'll inject the config value.
 		$table = $this->app['config']['auth.table'];
 
@@ -69,27 +69,27 @@ class AuthManager extends Manager {
 	}
 
 	/**
-	 * Create an instance of the Eloquent driver.
+	 * Create an instance of the ActiveRecord driver.
 	 *
 	 * @return \Fly\Auth\Guard
 	 */
-	public function createEloquentDriver()
+	public function createActiveRecordDriver()
 	{
-		$provider = $this->createEloquentProvider();
+		$provider = $this->createActiveRecordProvider();
 
 		return new Guard($provider, $this->app['session.store']);
 	}
 
 	/**
-	 * Create an instance of the Eloquent user provider.
+	 * Create an instance of the ActiveRecord user provider.
 	 *
-	 * @return \Fly\Auth\EloquentUserProvider
+	 * @return \Fly\Auth\ActiveRecordUserProvider
 	 */
-	protected function createEloquentProvider()
+	protected function createActiveRecordProvider()
 	{
 		$model = $this->app['config']['auth.model'];
 
-		return new OrmUserProvider($this->app['hash'], $model);
+		return new ActiveRecordUserProvider($this->app['hash'], $model);
 	}
 
 	/**
