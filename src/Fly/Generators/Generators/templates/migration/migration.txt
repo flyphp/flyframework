@@ -1,0 +1,22 @@
+<?php
+
+use Fly\Database\Migrations\Migration;
+use Fly\Database\Schema\Blueprint;
+
+class {{name}} extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+{{up}}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+{{down}}
+
+}
