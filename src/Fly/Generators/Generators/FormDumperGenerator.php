@@ -122,7 +122,7 @@ class FormDumperGenerator {
      */
     protected function getFormOpen($method, $model)
     {
-        $models = Pluralizer::plural($model);
+        $models = $this->getTableName($model);
 
         if (preg_match('/edit|update|put|patch/i', $method))
         {
@@ -139,7 +139,7 @@ class FormDumperGenerator {
      */
     public function getTableInfo($model)
     {
-        $table = Pluralizer::plural($model);
+        $table = $this->getTableName($model);
 
         return \DB::getDoctrineSchemaManager()->listTableDetails($table)->getColumns();
     }
