@@ -10,6 +10,19 @@ class RequestedCacheNotFound extends \Exception {}
 abstract class BaseGenerator {
 
     /**
+     * Built-in Templates Base Path
+     * @var [string]
+     */
+    protected $templateCorePath = __DIR__.'/../Generators/templates/';
+
+    /**
+     * App Templates Base Path
+     * @var [string]
+     */
+    protected $templateAppPath = app_path().'/generators/templates/';
+
+
+    /**
      * File path to generate
      *
      * @var string
@@ -94,4 +107,19 @@ abstract class BaseGenerator {
      * @return string
      */
     abstract protected function getTemplate($template, $name);
+
+
+    /**
+     * 
+     */
+    protected function getTemplatePath($template)
+    {
+        if ($this->file->exists($this->templateAppPath.$template))
+        {
+            return $this->templateAppPath.$template;
+        }
+
+        return $this->templateCorePath.$template;
+    }
+    
 }

@@ -71,7 +71,7 @@ class ControllerGeneratorCommand extends BaseGeneratorCommand {
     {
         return array(
            array('path', null, InputOption::VALUE_OPTIONAL, 'Path to controllers directory.', app_path() . '/controllers'),
-           array('template', null, InputOption::VALUE_OPTIONAL, 'Path to template.', __DIR__.'/../Generators/templates/controller.txt'),
+           array('template', null, InputOption::VALUE_OPTIONAL, 'Path to template.', $this->getTemplatePath('controller.txt')),
         );
     }
 
