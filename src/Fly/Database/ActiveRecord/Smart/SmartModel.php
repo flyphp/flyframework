@@ -3,7 +3,7 @@
 use Closure;
 use Fly\Container\Container;
 use Fly\Database\Capsule\Manager as DatabaseCapsule;
-use Fly\Database\Eloquent\Relations\BelongsTo;
+use Fly\Database\ActiveRecord\Relations\BelongsTo;
 use Fly\Events\Dispatcher;
 use Fly\Support\MessageBag;
 use Fly\Support\Facades\Input;
@@ -20,7 +20,7 @@ use Symfony\Component\Translation\Translator;
  * SmartModel - Self-validating ActiveRecord model base class
  *
  */
-abstract class SmartModel extends \Fly\Database\ActiveRecord\BuilderModel {
+abstract class SmartModel extends \Fly\Database\ActiveRecord\Model {
 
     /**
      * The rules to be applied to the data.
@@ -824,7 +824,7 @@ abstract class SmartModel extends \Fly\Database\ActiveRecord\BuilderModel {
 	 * @return \Fly\Database\ActiveRecord\Builder
 	 */
 	public function newQuery($excludeDeleted = true) {
-		$builder = new Builder($this->newBaseQueryBuilder());
+		$builder = new SmartBuilder($this->newBaseQueryBuilder());
 		$builder->throwOnFind = static::$throwOnFind;
 
 		// Once we have the query builders, we will set the model instances so the
