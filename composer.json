@@ -39,7 +39,8 @@
         "symfony/process": "2.4.*",
         "symfony/routing": "2.4.*",
         "symfony/translation": "2.4.*",
-        "mustache/mustache": "2.4.*"
+        "mustache/mustache": "2.4.*",
+        "robclancy/presenter": "1.2.*"
     },
     "require-dev": {
         "aws/aws-sdk-php": "2.5.*",
