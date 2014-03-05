@@ -217,6 +217,7 @@ class Command extends \Symfony\Component\Console\Command\Command {
 	 */
 	public function line($string)
 	{
+		echo dragon();
 		$this->output->writeln($string);
 	}
 
@@ -228,6 +229,7 @@ class Command extends \Symfony\Component\Console\Command\Command {
 	 */
 	public function info($string)
 	{
+		echo dragon();
 		$this->output->writeln("<info>$string</info>");
 	}
 
@@ -239,6 +241,7 @@ class Command extends \Symfony\Component\Console\Command\Command {
 	 */
 	public function comment($string)
 	{
+		echo dragon();
 		$this->output->writeln("<comment>$string</comment>");
 	}
 
@@ -250,6 +253,7 @@ class Command extends \Symfony\Component\Console\Command\Command {
 	 */
 	public function question($string)
 	{
+		echo dragon();
 		$this->output->writeln("<question>$string</question>");
 	}
 
